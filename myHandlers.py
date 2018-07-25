@@ -11,7 +11,7 @@ dispatcher = updater.dispatcher
 
 #start handler
 def startHandle(bot, update):
-  userId = str(update.message.chat_id)
+  userId = int(update.message.chat_id)
   checkRank = open('admins.txt', 'r+')
   admins = checkRank.readlines()
   openReg = open('users.txt', 'r+')
@@ -26,11 +26,10 @@ def startHandle(bot, update):
       regUser.close()
       bot.send_message(chat_id=update.message.chat_id, text="You're welcome to Dreamberg")
   
-    else:
+    elif userId in admins:
       buttons = [["Add Admin", "Reply Messages"]]
       keyboard = telegram.ReplyKeyboardMarkup(buttons,resize_keyboard=True)
       bot.send_message(chat_id=int(userId), text="Hello Admin, \n What do you wanna do?", reply_markup=keyboard)
-      print("He's an admin")
     checkRank.close()
 
   
