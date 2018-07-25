@@ -19,18 +19,17 @@ def startHandle(bot, update):
   if userId in users:
     bot.send_message(chat_id=update.message.chat_id, text="You already started the bot. \n You can  send your message to the admin")
     openReg.close()
-  else:
-    if userId not in admins:
+  elif userId not in admins:
       regUser = open('users.txt', 'a+')
       regUser.write(userId)
       regUser.close()
       bot.send_message(chat_id=update.message.chat_id, text="You're welcome to Dreamberg")
   
-    elif userId in admins:
+  elif userId in admins:
       buttons = [["Add Admin", "Reply Messages"]]
       keyboard = telegram.ReplyKeyboardMarkup(buttons,resize_keyboard=True)
       bot.send_message(chat_id=int(userId), text="Hello Admin, \n What do you wanna do?", reply_markup=keyboard)
-    checkRank.close()
+      checkRank.close()
 
   
   
