@@ -27,6 +27,6 @@ dispatcher.add_handler(startHandler)
 updater.start_webhook(listen="0.0.0.0",
                       port=PORT,
                       url_path=TOKEN)
-updater.bot.set_webhook("https://initot.com/" + TOKEN)
+updater.bot.set_webhook("https://initot.herokuapp.com/" + TOKEN)
 updater.idle()
 
