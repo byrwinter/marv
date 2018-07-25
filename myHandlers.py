@@ -38,11 +38,12 @@ def startHandle(bot, update):
 #messages handlers
 
 def subMsgHandle(bot, update):
-  userId = int(update.message.chat_id)
-  admin = 522799029
+  userId = str(update.message.chat_id)
+  openReg = open('admins.txt', 'r+')
+  admins = openReg.readlines()
 
   #Check Admin Commands
-  if userId == int(admin):
+  if userId in admins:
     msg = update.message.text    
 
 
@@ -90,5 +91,4 @@ def subMsgHandle(bot, update):
     for admin in admins:
       bot.forward_message(chat_id=int(admin), from_chat_id=update.message.chat_id, message_id=update.message.message_id)
     print("message forwarded")
-
 
