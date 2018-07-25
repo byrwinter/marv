@@ -11,7 +11,7 @@ dispatcher = updater.dispatcher
 
 #start handler
 def startHandle(bot, update):
-  userId = int(update.message.chat_id)
+  userId = str(update.message.chat_id)
   checkRank = open('admins.txt', 'r+')
   admins = checkRank.readlines()
   openReg = open('users.txt', 'r+')
