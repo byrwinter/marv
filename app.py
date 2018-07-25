@@ -1,6 +1,10 @@
 import telegram
 from telegram.ext import Updater, Dispatcher, CommandHandler, Handler
 import os
+from telegram.ext import  MessageHandler, BaseFilter, Filters
+from telegram import MessageEntity
+from myHandlers import *
+
 
 
 
@@ -22,6 +26,17 @@ startHandler = CommandHandler('start', echo)
 dispatcher.add_handler(startHandler)
 
 
+bot = telegram.Bot(token="666720872:AAF-px3ihfHBXSscVnehO_hB7NIVNn7q6QY")
+updater = Updater(token="666720872:AAF-px3ihfHBXSscVnehO_hB7NIVNn7q6QY")
+dispatcher = updater.dispatcher
+
+
+
+startHandler = CommandHandler('start', startHandle)
+dispatcher.add_handler(startHandler)
+
+subMsgHandler = MessageHandler(Filters.text, subMsgHandle)
+dispatcher.add_handler(subMsgHandler)
 
 # add handlers
 updater.start_webhook(listen="0.0.0.0",
