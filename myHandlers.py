@@ -32,13 +32,13 @@ def startHandle(bot, update):
     #for registered user
     if str(userId) in users:
       #print("A user here")
-      bot.send_message(chat_id=update.message.chat_id, text="You already started the bot. \n You can  send your message to the admin")
+      bot.send_message(chat_id=update.message.chat_id, text="Hello, \n You already started the bot. \n You can send your message to me now")
 
     #for new user
     else:
       openreg.close()
       #print(users)
-      bot.send_message(chat_id=update.message.chat_id, text="You're welcome to Dreamberg")
+      bot.send_message(chat_id=update.message.chat_id, text="You're welcome to Initot. \n I'm the official bot fow the admins of @marvel_newz. \n You can send any questions, requests and suggestions to them through me...")
       regUser = open('users.txt', 'a+')
       regUser.write('\n' + str(userId))
       regUser.close()
@@ -50,7 +50,7 @@ def startHandle(bot, update):
 #subMsgHandlers
 def subMsgHandle(bot, update):
   userId = update.message.chat_id
-  bot.send_message(chat_id=userId, text="Your message has been recieved")
+  bot.send_message(chat_id=userId, text="Your message has been recieved. \n We'll get back to you. You can continue to enjoy the best content from @marvel_newz")
   print(update.message.text)
   bot.forward_message(chat_id=int(adminId), from_chat_id=update.message.chat_id, message_id=update.message.message_id)
 
@@ -65,10 +65,10 @@ def adminHandle(bot, update):
     bot.send_message(chat_id=adminId, text="This feature has not been activated")  
 
   elif userId == adminId and update.message.text == "Reply Messages":
-    bot.send_message(chat_id=adminId, text="Please tap the message you wanna reply and reply it")
+    bot.send_message(chat_id=adminId, text="Please tap the message you wanna reply and reply to me")
 
   elif userId != adminId:
-    bot.send_message(chat_id=update.message.chat_id, text="You are nou authorized to make this request")
+    bot.send_message(chat_id=update.message.chat_id, text="You are not authorized to make this request")
 
 
 
