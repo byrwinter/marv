@@ -20,7 +20,7 @@ def startHandle(bot, update):
     #print("Here's an admin")
     buttons = [["Add Admin", "Reply Messages"]]
     keyboard = telegram.ReplyKeyboardMarkup(buttons,resize_keyboard=True)
-    bot.send_message(chat_id=int(userId), text="Hello Admin, \n What do you wanna do?", reply_markup=keyboard)
+    bot.send_message(chat_id=int(userId), text="Hello Admin, \nWhat do you wanna do?", reply_markup=keyboard)
 
   #for subscriber
   else:
@@ -32,13 +32,13 @@ def startHandle(bot, update):
     #for registered user
     if str(userId) in users:
       #print("A user here")
-      bot.send_message(chat_id=update.message.chat_id, text="Hello, \n You already started the bot. \n You can send your message to me now")
+      bot.send_message(chat_id=update.message.chat_id, text="Hello, \n You already started the bot. \nYou can send your messages to me now")
 
     #for new user
     else:
       openreg.close()
       #print(users)
-      bot.send_message(chat_id=update.message.chat_id, text="You're welcome to Initot. \n I'm the official bot fow the admins of @marvel_newz. \n You can send any questions, requests and suggestions to them through me...")
+      bot.send_message(chat_id=update.message.chat_id, text="You're welcome to Initot. \nI'm the official bot fow the admins of @marvel_newz. \nYou can send any questions, requests and suggestions to them through me...")
       regUser = open('users.txt', 'a+')
       regUser.write('\n' + str(userId))
       regUser.close()
@@ -50,7 +50,7 @@ def startHandle(bot, update):
 #subMsgHandlers
 def subMsgHandle(bot, update):
   userId = update.message.chat_id
-  bot.send_message(chat_id=userId, text="Your message has been recieved. \n We'll get back to you. You can continue to enjoy the best content from @marvel_newz")
+  bot.send_message(chat_id=userId, text="Your message has been recieved. \nWe'll get back to you.")
   print(update.message.text)
   bot.forward_message(chat_id=int(adminId), from_chat_id=update.message.chat_id, message_id=update.message.message_id)
 
