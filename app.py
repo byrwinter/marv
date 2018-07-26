@@ -6,8 +6,6 @@ from telegram import MessageEntity
 from myHandlers import *
 
 
-
-
 bot = telegram.Bot(token="666720872:AAF-px3ihfHBXSscVnehO_hB7NIVNn7q6QY")
 updater = Updater(token="666720872:AAF-px3ihfHBXSscVnehO_hB7NIVNn7q6QY")
 dispatcher = updater.dispatcher
