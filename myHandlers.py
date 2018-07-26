@@ -4,7 +4,7 @@ from telegram.ext import Handler, CommandHandler, MessageHandler, BaseFilter, Fi
 from telegram import MessageEntity
 import os
 
-adminId = 569482800
+adminId = 522799029
 
 
 
