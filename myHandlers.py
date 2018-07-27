@@ -8,7 +8,7 @@ adminId = 522799029
 
 
  #print(emoji.emojize('Python is :thumbs_up:'))
-
+emoji = emoji
 
 #emojis
 
