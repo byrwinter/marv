@@ -7,6 +7,17 @@ import os
 adminId = 522799029
 
 
+ #print(emoji.emojize('Python is :thumbs_up:'))
+
+
+#emojis
+
+smile = emoji.emojize(':smile:', use_aliases=True)
+wave = emoji.emojize(':wave:', use_aliases=True)
+thumbsup = emoji.emojize(':thumbsup:', use_aliases=True)
+confused = emoji.emojize(':confused:', use_aliases=True)
+perfecto = emoji.emojize(':ok_hand:', use_aliases=True)
+
 
 
 
@@ -20,7 +31,7 @@ def startHandle(bot, update):
     #print("Here's an admin")
     buttons = [["Add Admin", "Reply Messages"]]
     keyboard = telegram.ReplyKeyboardMarkup(buttons,resize_keyboard=True)
-    bot.send_message(chat_id=int(userId), text="Hello Admin, \nWhat do you wanna do?", reply_markup=keyboard)
+    bot.send_message(chat_id=int(userId), text="Hello Admin " + wave + "\n What do you wanna do?", reply_markup=keyboard)
 
   #for subscriber
   else:
@@ -32,13 +43,13 @@ def startHandle(bot, update):
     #for registered user
     if str(userId) in users:
       #print("A user here")
-      bot.send_message(chat_id=update.message.chat_id, text="Hello, \n You already started the bot. \nYou can send your messages to me now")
+      bot.send_message(chat_id=update.message.chat_id, text=confused + " You've already started the bot.\nYou can now send your message to the admin " + smile)
 
     #for new user
     else:
       openreg.close()
       #print(users)
-      bot.send_message(chat_id=update.message.chat_id, text="You're welcome to Initot. \nI'm the official bot fow the admins of @marvel_newz. \nYou can send any questions, requests and suggestions to them through me...")
+      bot.send_message(chat_id=update.message.chat_id, text="Hello " + smile  + "\nI'm Initot, the official bot for the admins of @marvel_newz. Send any message to them through me.")
       regUser = open('users.txt', 'a+')
       regUser.write('\n' + str(userId))
       regUser.close()
@@ -50,8 +61,8 @@ def startHandle(bot, update):
 #subMsgHandlers
 def subMsgHandle(bot, update):
   userId = update.message.chat_id
-  bot.send_message(chat_id=userId, text="Your message has been recieved. \nWe'll get back to you.")
-  print(update.message.text)
+  bot.send_message(chat_id=userId, text=perfecto + "\nYour message has been recieved")
+  #print(update.message.text)
   bot.forward_message(chat_id=int(adminId), from_chat_id=update.message.chat_id, message_id=update.message.message_id)
 
 
@@ -62,10 +73,10 @@ def adminHandle(bot, update):
   #print(update.message.text)
   userId = update.message.chat_id
   if userId == adminId and update.message.text == "Add Admin":
-    bot.send_message(chat_id=adminId, text="This feature has not been activated")  
+    bot.send_message(chat_id=adminId, text=confused + " This feature has not been activated")  
 
   elif userId == adminId and update.message.text == "Reply Messages":
-    bot.send_message(chat_id=adminId, text="Please tap the message you wanna reply and reply to me")
+    bot.send_message(chat_id=adminId, text=smile + " Please tap the message you wanna reply and reply it")
 
   elif userId != adminId:
     bot.send_message(chat_id=update.message.chat_id, text="You are not authorized to make this request")
@@ -77,9 +88,9 @@ def adminHandle(bot, update):
 def replyMsgHandle(bot, update):
   userId = update.message.chat_id
   if userId == adminId:
-    bot.send_message(chat_id=adminId, text="Reply sent")
+    bot.send_message(chat_id=adminId, text=thumbsup + "\nReply sent")
     #print(update.message.reply_to_message.forward_from.id)
-    bot.send_message(chat_id=update.message.reply_to_message.forward_from.id, text=update.message.text)
+    bot.send_message(chat_id=update.message.reply_to_message.forward_from.id, text= wave + " Reply: " + "\n" + update.message.text)
 
   else:
     bot.send_message(chat_id=userId, text="You're not an admin")
