@@ -2,21 +2,22 @@ import telegram
 from telegram.ext import Updater, Dispatcher
 from telegram.ext import Handler, CommandHandler, MessageHandler, BaseFilter, Filters
 from telegram import MessageEntity
+from emoji import emojize
 import os
 
+
+#569482800
 adminId = 522799029
 
-
  #print(emoji.emojize('Python is :thumbs_up:'))
-emoji = emoji
-
+#emoji = emoji
 #emojis
 
-smile = emoji.emojize(':smile:', use_aliases=True)
-wave = emoji.emojize(':wave:', use_aliases=True)
-thumbsup = emoji.emojize(':thumbsup:', use_aliases=True)
-confused = emoji.emojize(':confused:', use_aliases=True)
-perfecto = emoji.emojize(':ok_hand:', use_aliases=True)
+smile = emojize(':smile:', use_aliases=True)
+wave = emojize(':wave:', use_aliases=True)
+thumbsup = emojize(':thumbsup:', use_aliases=True)
+confused = emojize(':confused:', use_aliases=True)
+perfecto = emojize(':ok_hand:', use_aliases=True)
 
 
 
@@ -31,7 +32,7 @@ def startHandle(bot, update):
     #print("Here's an admin")
     buttons = [["Add Admin", "Reply Messages"]]
     keyboard = telegram.ReplyKeyboardMarkup(buttons,resize_keyboard=True)
-    bot.send_message(chat_id=int(userId), text="Hello Admin " + wave + "\n What do you wanna do?", reply_markup=keyboard)
+    bot.send_message(chat_id=int(userId), text="Hello Admin" + smile + "\n What do you wanna do?", reply_markup=keyboard)
 
   #for subscriber
   else:
